@@ -1,0 +1,25 @@
+[
+    { "symptom": "fever", "specialization": "General Physician" },
+    { "symptom": "cough", "specialization": "Pulmonologist" },
+    { "symptom": "chest pain", "specialization": "Cardiologist" },
+    { "symptom": "shortness of breath", "specialization": "Pulmonologist" },
+    { "symptom": "headache", "specialization": "Neurologist" },
+    { "symptom": "dizziness", "specialization": "Neurologist" },
+    { "symptom": "skin rash", "specialization": "Dermatologist" },
+    { "symptom": "acne", "specialization": "Dermatologist" },
+    { "symptom": "back pain", "specialization": "Orthopedic" },
+    { "symptom": "joint pain", "specialization": "Orthopedic" },
+    { "symptom": "toothache", "specialization": "Dentist" },
+    { "symptom": "bleeding gums", "specialization": "Dentist" },
+    { "symptom": "anxiety", "specialization": "Psychiatrist" },
+    { "symptom": "depression", "specialization": "Psychiatrist" },
+    { "symptom": "abdominal pain", "specialization": "Gastroenterologist" },
+    { "symptom": "vomiting", "specialization": "Gastroenterologist" },
+    { "symptom": "eye pain", "specialization": "Ophthalmologist" },
+    { "symptom": "blurred vision", "specialization": "Ophthalmologist" },
+    { "symptom": "hearing loss", "specialization": "ENT Specialist" },
+    { "symptom": "sore throat", "specialization": "ENT Specialist" },
+    { "symptom": "high blood sugar", "specialization": "Endocrinologist" },
+    { "symptom": "thyroid imbalance", "specialization": "Endocrinologist" }
+  ]
+  
