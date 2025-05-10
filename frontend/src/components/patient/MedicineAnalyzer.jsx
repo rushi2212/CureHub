@@ -15,7 +15,7 @@ const MedicineAnalyzer = () => {
   const canvasRef = useRef(null);
   const streamRef = useRef(null);
 
-  const BASE_URL = "http://localhost:8000";
+  const BASE_URL = "https://fastapi-803g.onrender.com";
 
   // Clean up camera stream on unmount or when switching modes
   useEffect(() => {

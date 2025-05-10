@@ -8,7 +8,7 @@ const MedicalVideoSearch = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [searchPerformed, setSearchPerformed] = useState(false);
-  const API_URL = "http://localhost:8000/search-medical-videos/";
+  const API_URL = "https://fastapi-803g.onrender.com/search-medical-videos/";
 
   // Automatically search when component mounts
   useEffect(() => {

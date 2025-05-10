@@ -134,7 +134,7 @@ const FileUpload = () => {
     setUploadStatus(null);
     try {
       const response = await axios.post(
-        "http://localhost:8000/analyze-reports/",
+        "https://fastapi-803g.onrender.com/analyze-reports/",
         formData,
         {
           headers: {

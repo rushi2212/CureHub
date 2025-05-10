@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import hospital from "../assets/hospital.jpg";
+import logo from "../assets/logo_transparent.png";
 import {
   ArrowRight,
   Building2,
@@ -159,7 +161,7 @@ function Home() {
         <div
           className="absolute inset-0 bg-cover bg-center opacity-30"
           style={{
-            backgroundImage: `url('/src/assets/hospital.jpg')`,
+            backgroundImage: { hospital },
           }}
         ></div>
 
@@ -205,7 +207,7 @@ function Home() {
                 <div className="absolute -bottom-8 left-20 w-40 h-40 bg-blue-400 rounded-full opacity-30 filter blur-3xl"></div>
                 <div className="relative">
                   <img
-                    src="/src/assets/logo_transparent.png"
+                    src={logo}
                     className="rounded-2xl shadow-lg object-cover w-full h-64 sm:h-80 md:h-80 lg:h-96"
                     alt="Healthcare Illustration"
                   />
