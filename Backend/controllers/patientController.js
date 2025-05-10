@@ -8,7 +8,6 @@ import path from "path";
 // import { processFileWithAI } from "../utils/aiProcessor.js";
 import * as tf from "@tensorflow/tfjs";
 import { fileURLToPath } from "url";
-import symptomsToSpecialization from "../data/symptomsToSpecialization.json" assert { type: "json" };
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
