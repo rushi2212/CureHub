@@ -15,7 +15,7 @@ const MedicineAnalyzer = () => {
   const canvasRef = useRef(null);
   const streamRef = useRef(null);
 
-  const BASE_URL = "http://localhost:8000";
+  const BASE_URL = "https://fastapi-rlhq.onrender.com";
 
   // Clean up camera stream on unmount or when switching modes
   useEffect(() => {
@@ -47,7 +47,7 @@ const MedicineAnalyzer = () => {
     try {
       setLoading(true);
       const response = await axios.post(
-        `${BASE_URL}/analyze-medicine/`,
+        `https://fastapi-rlhq.onrender.com/analyze-medicine/`,
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
