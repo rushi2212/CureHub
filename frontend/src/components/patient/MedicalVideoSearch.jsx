@@ -8,7 +8,7 @@ const MedicalVideoSearch = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [searchPerformed, setSearchPerformed] = useState(false);
-  const API_URL = "https://fastapi-803g.onrender.com/search-medical-videos/";
+  const API_URL = "http://localhost:8000/search-medical-videos/";
 
   // Automatically search when component mounts
   useEffect(() => {
@@ -60,18 +60,18 @@ const MedicalVideoSearch = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div className="w-full px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="text-center mb-10"
+        className="text-center mb-6 sm:mb-10"
       >
-        <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-800 mb-4">
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-800 mb-2 sm:mb-4">
           Medical Video Library
         </h1>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-2">
           Search for expert videos on medical conditions, treatments, and health
           advice from trusted sources.
         </p>
@@ -83,9 +83,9 @@ const MedicalVideoSearch = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
         onSubmit={handleSubmit}
-        className="max-w-3xl mx-auto mb-12"
+        className="max-w-3xl mx-auto mb-8 sm:mb-12 px-2"
       >
-        <div className="flex flex-col md:flex-row gap-4">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
           <div className="relative flex-grow">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <svg
@@ -105,15 +105,15 @@ const MedicalVideoSearch = () => {
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search for medical videos (e.g., diabetes management, migraine relief)"
-              className="block w-full pl-10 pr-4 py-4 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm text-gray-700"
+              placeholder="Search for medical videos..."
+              className="block w-full pl-10 pr-4 py-3 sm:py-4 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm text-gray-700 text-sm sm:text-base"
             />
           </div>
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             disabled={loading}
-            className={`px-6 py-4 rounded-lg shadow-md text-white font-medium flex items-center justify-center space-x-2 ${
+            className={`px-4 sm:px-6 py-3 sm:py-4 rounded-lg shadow-md text-white font-medium flex items-center justify-center space-x-2 ${
               loading
                 ? "bg-gray-400 cursor-not-allowed"
                 : "bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800"
@@ -122,7 +122,7 @@ const MedicalVideoSearch = () => {
             {loading ? (
               <>
                 <svg
-                  className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                  className="animate-spin -ml-1 mr-2 h-5 w-5 text-white"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -141,7 +141,7 @@ const MedicalVideoSearch = () => {
                     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                   ></path>
                 </svg>
-                <span>Searching...</span>
+                <span className="text-sm sm:text-base">Searching...</span>
               </>
             ) : (
               <>
@@ -157,7 +157,7 @@ const MedicalVideoSearch = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-                <span>Search Videos</span>
+                <span className="text-sm sm:text-base">Search Videos</span>
               </>
             )}
           </motion.button>
@@ -172,7 +172,7 @@ const MedicalVideoSearch = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="max-w-3xl mx-auto mb-8 bg-red-50 border-l-4 border-red-500 p-4 rounded-md"
+            className="max-w-3xl mx-auto mb-6 sm:mb-8 bg-red-50 border-l-4 border-red-500 p-3 sm:p-4 rounded-md mx-2"
           >
             <div className="flex">
               <div className="flex-shrink-0">
@@ -189,7 +189,7 @@ const MedicalVideoSearch = () => {
                 </svg>
               </div>
               <div className="ml-3">
-                <p className="text-sm text-red-700">Error: {error}</p>
+                <p className="text-xs sm:text-sm text-red-700">Error: {error}</p>
               </div>
             </div>
           </motion.div>
@@ -203,12 +203,12 @@ const MedicalVideoSearch = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="flex flex-col items-center justify-center py-12"
+            className="flex flex-col items-center justify-center py-8 sm:py-12"
           >
             <div className="loader">
               <div className="dot-pulse"></div>
             </div>
-            <p className="mt-4 text-gray-600">
+            <p className="mt-4 text-sm sm:text-base text-gray-600">
               Searching for relevant medical videos...
             </p>
           </motion.div>
@@ -222,23 +222,24 @@ const MedicalVideoSearch = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
+            className="px-2"
           >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="flex items-center justify-between mb-6"
+              className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 sm:mb-6"
             >
-              <h2 className="text-2xl font-bold text-gray-800">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-0">
                 <span className="text-blue-600">{videos.length}</span> medical
                 videos about "{query}"
               </h2>
-              <span className="px-3 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-full">
+              <span className="px-2 sm:px-3 py-1 bg-blue-100 text-blue-800 text-xs sm:text-sm font-medium rounded-full self-start sm:self-auto">
                 Trusted Sources
               </span>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
               {videos.map((videoUrl, index) => {
                 const videoId = extractVideoId(videoUrl);
                 if (!videoId) return null;
@@ -249,7 +250,7 @@ const MedicalVideoSearch = () => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: index * 0.1 }}
-                    className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100"
+                    className="bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-md sm:shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100"
                   >
                     <div className="relative pb-[56.25%] h-0 overflow-hidden">
                       <iframe
@@ -261,27 +262,27 @@ const MedicalVideoSearch = () => {
                         allowFullScreen
                       ></iframe>
                     </div>
-                    <div className="p-5">
-                      <div className="flex items-start mb-3">
-                        <div className="bg-blue-600 rounded-full w-8 h-8 flex items-center justify-center text-white font-bold mr-3 flex-shrink-0">
+                    <div className="p-3 sm:p-5">
+                      <div className="flex items-start mb-2 sm:mb-3">
+                        <div className="bg-blue-600 rounded-full w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center text-white font-bold mr-2 sm:mr-3 flex-shrink-0 text-xs sm:text-base">
                           {index + 1}
                         </div>
-                        <h3 className="text-lg font-semibold text-gray-800 line-clamp-2">
+                        <h3 className="text-base sm:text-lg font-semibold text-gray-800 line-clamp-2">
                           {query} - Medical Information
                         </h3>
                       </div>
-                      <div className="flex items-center justify-between mt-4">
-                        <span className="text-sm text-gray-500">
+                      <div className="flex items-center justify-between mt-3 sm:mt-4">
+                        <span className="text-xs sm:text-sm text-gray-500">
                           Verified content
                         </span>
                         <a
                           href={videoUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center px-3 py-1 rounded-lg bg-red-50 text-red-700 hover:bg-red-100 transition-colors duration-200"
+                          className="inline-flex items-center px-2 sm:px-3 py-1 rounded-lg bg-red-50 text-red-700 hover:bg-red-100 transition-colors duration-200 text-xs sm:text-sm"
                         >
                           <svg
-                            className="w-4 h-4 mr-1"
+                            className="w-3 h-3 sm:w-4 sm:h-4 mr-1"
                             fill="currentColor"
                             viewBox="0 0 24 24"
                           >
@@ -306,10 +307,10 @@ const MedicalVideoSearch = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center py-12"
+            className="text-center py-8 sm:py-12"
           >
             <svg
-              className="mx-auto h-16 w-16 text-gray-400"
+              className="mx-auto h-12 w-12 sm:h-16 sm:w-16 text-gray-400"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -321,10 +322,10 @@ const MedicalVideoSearch = () => {
                 d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"
               />
             </svg>
-            <h3 className="mt-2 text-lg font-medium text-gray-900">
+            <h3 className="mt-2 text-base sm:text-lg font-medium text-gray-900">
               No videos found
             </h3>
-            <p className="mt-1 text-gray-500">
+            <p className="mt-1 text-xs sm:text-sm text-gray-500 px-4">
               Try adjusting your search terms or try a different query.
             </p>
           </motion.div>
@@ -335,14 +336,22 @@ const MedicalVideoSearch = () => {
         .dot-pulse {
           position: relative;
           left: -9999px;
-          width: 10px;
-          height: 10px;
-          border-radius: 5px;
+          width: 8px;
+          height: 8px;
+          border-radius: 4px;
           background-color: #3b82f6;
           color: #3b82f6;
           box-shadow: 9999px 0 0 -5px;
           animation: dot-pulse 1.5s infinite linear;
           animation-delay: 0.25s;
+        }
+
+        @media (min-width: 640px) {
+          .dot-pulse {
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+          }
         }
 
         .dot-pulse::before,
@@ -351,11 +360,20 @@ const MedicalVideoSearch = () => {
           display: inline-block;
           position: absolute;
           top: 0;
-          width: 10px;
-          height: 10px;
-          border-radius: 5px;
+          width: 8px;
+          height: 8px;
+          border-radius: 4px;
           background-color: #3b82f6;
           color: #3b82f6;
+        }
+
+        @media (min-width: 640px) {
+          .dot-pulse::before,
+          .dot-pulse::after {
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+          }
         }
 
         .dot-pulse::before {

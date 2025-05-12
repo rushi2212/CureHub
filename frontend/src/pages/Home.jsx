@@ -33,12 +33,12 @@ function Home() {
           <div className="flex justify-between h-16">
             <div className="flex items-center">
               <div className="flex-shrink-0 flex items-center">
-                <HeartPulse className="h-8 w-8 text-blue-600" />
-                <span className="ml-2 text-2xl font-bold text-blue-800">
+                <HeartPulse className="h-6 w-6 sm:h-8 sm:w-8 text-blue-600" />
+                <span className="ml-2 text-xl sm:text-2xl font-bold text-blue-800">
                   CureHub
                 </span>
               </div>
-              <div className="hidden md:ml-6 md:flex md:space-x-8">
+              <div className="hidden md:ml-6 md:flex md:space-x-4 lg:space-x-8">
                 <a
                   href="#"
                   className="border-blue-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
@@ -74,13 +74,13 @@ function Home() {
             <div className="hidden md:ml-6 md:flex md:items-center md:space-x-4">
               <a
                 href="/login"
-                className="px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-800 transition duration-200"
+                className="px-3 py-2 text-sm font-medium text-blue-600 hover:text-blue-800 transition duration-200"
               >
                 Log In
               </a>
               <a
                 href="/signup"
-                className="px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition duration-200"
+                className="px-3 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition duration-200"
               >
                 Sign Up
               </a>
@@ -89,6 +89,8 @@ function Home() {
               <button
                 onClick={toggleMobileMenu}
                 className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none"
+                aria-expanded={mobileMenuOpen}
+                aria-label="Toggle mobile menu"
               >
                 {mobileMenuOpen ? (
                   <X className="h-6 w-6" />
@@ -156,12 +158,12 @@ function Home() {
       </nav>
 
       {/* Hero Section with Medical Illustration */}
-      <div className="relative overflow-hidden py-12 md:py-16 lg:py-24 bg-cover bg-center">
+      <div className="relative overflow-hidden py-8 md:py-16 lg:py-24 bg-cover bg-center">
         {/* Background image with reduced opacity */}
         <div
           className="absolute inset-0 bg-cover bg-center opacity-30"
           style={{
-            backgroundImage: { hospital },
+            backgroundImage: `url(${hospital})`
           }}
         ></div>
 
@@ -172,7 +174,7 @@ function Home() {
               <div className="inline-block p-2 bg-blue-100 rounded-lg mb-4">
                 <HeartPulse className="h-6 w-6 text-blue-600" />
               </div>
-              <h1 className="text-3xl tracking-tight font-extrabold text-blue-900 sm:text-4xl md:text-5xl lg:text-6xl">
+              <h1 className="text-2xl tracking-tight font-extrabold text-blue-900 sm:text-3xl md:text-4xl lg:text-5xl">
                 <span className="block">Healthcare</span>
                 <span className="block text-blue-600">Simplified</span>
               </h1>
@@ -181,34 +183,30 @@ function Home() {
                 care, appointments, and hospital resources with efficiency and
                 care.
               </p>
-              <div className="mt-8 flex flex-col sm:flex-row justify-center md:justify-start space-y-3 sm:space-y-0 sm:space-x-4">
-                <div>
-                  <a
-                    href="#"
-                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition duration-200 md:py-4 md:text-lg md:px-10"
-                  >
-                    Get Started
-                  </a>
-                </div>
-                <div>
-                  <a
-                    href="#"
-                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 transition duration-200 md:py-4 md:text-lg md:px-10"
-                  >
-                    Learn More
-                  </a>
-                </div>
+              <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row justify-center md:justify-start space-y-3 sm:space-y-0 sm:space-x-4">
+                <a
+                  href="#"
+                  className="w-full flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition duration-200 md:py-3 md:text-lg"
+                >
+                  Get Started
+                </a>
+                <a
+                  href="#"
+                  className="w-full flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200 transition duration-200 md:py-3 md:text-lg"
+                >
+                  Learn More
+                </a>
               </div>
             </div>
             <div className="flex justify-center mt-8 md:mt-0">
-              <div className="relative w-full max-w-lg">
-                <div className="absolute top-0 -left-4 w-40 h-40 bg-blue-300 rounded-full opacity-30 filter blur-3xl"></div>
-                <div className="absolute top-0 -right-4 w-40 h-40 bg-blue-500 rounded-full opacity-30 filter blur-3xl"></div>
-                <div className="absolute -bottom-8 left-20 w-40 h-40 bg-blue-400 rounded-full opacity-30 filter blur-3xl"></div>
+              <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
+                <div className="absolute top-0 -left-4 w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 bg-blue-300 rounded-full opacity-30 filter blur-3xl"></div>
+                <div className="absolute top-0 -right-4 w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 bg-blue-500 rounded-full opacity-30 filter blur-3xl"></div>
+                <div className="absolute -bottom-8 left-20 w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 bg-blue-400 rounded-full opacity-30 filter blur-3xl"></div>
                 <div className="relative">
                   <img
                     src={logo}
-                    className="rounded-2xl shadow-lg object-cover w-full h-64 sm:h-80 md:h-80 lg:h-96"
+                    className="rounded-2xl shadow-lg object-cover w-full h-48 sm:h-64 md:h-72 lg:h-80"
                     alt="Healthcare Illustration"
                   />
                 </div>
@@ -219,25 +217,25 @@ function Home() {
       </div>
 
       {/* Features Section */}
-      <div className="py-12 md:py-16 bg-white">
+      <div className="py-10 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-2xl font-extrabold text-blue-900 sm:text-3xl md:text-4xl">
+            <h2 className="text-xl font-extrabold text-blue-900 sm:text-2xl md:text-3xl lg:text-4xl">
               Complete Healthcare Solutions
             </h2>
-            <p className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-gray-500">
+            <p className="mt-3 max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-gray-500">
               Everything you need to manage your healthcare practice efficiently
             </p>
           </div>
 
-          <div className="mt-12 md:mt-16">
+          <div className="mt-10 md:mt-16">
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {/* Feature 1 */}
-              <div className="bg-blue-50 rounded-xl p-6 md:p-8 shadow-sm hover:shadow-md transition duration-300">
+              <div className="bg-blue-50 rounded-xl p-5 md:p-6 shadow-sm hover:shadow-md transition duration-300">
                 <div className="p-3 bg-blue-100 inline-block rounded-lg">
-                  <Calendar className="h-6 w-6 text-blue-600" />
+                  <Calendar className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600" />
                 </div>
-                <h3 className="mt-4 text-lg md:text-xl font-medium text-blue-900">
+                <h3 className="mt-4 text-base md:text-lg lg:text-xl font-medium text-blue-900">
                   Smart Scheduling
                 </h3>
                 <p className="mt-2 text-sm md:text-base text-gray-600">
@@ -247,11 +245,11 @@ function Home() {
               </div>
 
               {/* Feature 2 */}
-              <div className="bg-blue-50 rounded-xl p-6 md:p-8 shadow-sm hover:shadow-md transition duration-300">
+              <div className="bg-blue-50 rounded-xl p-5 md:p-6 shadow-sm hover:shadow-md transition duration-300">
                 <div className="p-3 bg-blue-100 inline-block rounded-lg">
-                  <ClipboardCheck className="h-6 w-6 text-blue-600" />
+                  <ClipboardCheck className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600" />
                 </div>
-                <h3 className="mt-4 text-lg md:text-xl font-medium text-blue-900">
+                <h3 className="mt-4 text-base md:text-lg lg:text-xl font-medium text-blue-900">
                   Electronic Records
                 </h3>
                 <p className="mt-2 text-sm md:text-base text-gray-600">
@@ -261,11 +259,11 @@ function Home() {
               </div>
 
               {/* Feature 3 */}
-              <div className="bg-blue-50 rounded-xl p-6 md:p-8 shadow-sm hover:shadow-md transition duration-300">
+              <div className="bg-blue-50 rounded-xl p-5 md:p-6 shadow-sm hover:shadow-md transition duration-300">
                 <div className="p-3 bg-blue-100 inline-block rounded-lg">
-                  <Shield className="h-6 w-6 text-blue-600" />
+                  <Shield className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600" />
                 </div>
-                <h3 className="mt-4 text-lg md:text-xl font-medium text-blue-900">
+                <h3 className="mt-4 text-base md:text-lg lg:text-xl font-medium text-blue-900">
                   Data Security
                 </h3>
                 <p className="mt-2 text-sm md:text-base text-gray-600">
@@ -275,11 +273,11 @@ function Home() {
               </div>
 
               {/* Feature 4 */}
-              <div className="bg-blue-50 rounded-xl p-6 md:p-8 shadow-sm hover:shadow-md transition duration-300">
+              <div className="bg-blue-50 rounded-xl p-5 md:p-6 shadow-sm hover:shadow-md transition duration-300">
                 <div className="p-3 bg-blue-100 inline-block rounded-lg">
-                  <Users className="h-6 w-6 text-blue-600" />
+                  <Users className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600" />
                 </div>
-                <h3 className="mt-4 text-lg md:text-xl font-medium text-blue-900">
+                <h3 className="mt-4 text-base md:text-lg lg:text-xl font-medium text-blue-900">
                   Team Collaboration
                 </h3>
                 <p className="mt-2 text-sm md:text-base text-gray-600">
@@ -289,11 +287,11 @@ function Home() {
               </div>
 
               {/* Feature 5 */}
-              <div className="bg-blue-50 rounded-xl p-6 md:p-8 shadow-sm hover:shadow-md transition duration-300">
+              <div className="bg-blue-50 rounded-xl p-5 md:p-6 shadow-sm hover:shadow-md transition duration-300">
                 <div className="p-3 bg-blue-100 inline-block rounded-lg">
-                  <FileHeart className="h-6 w-6 text-blue-600" />
+                  <FileHeart className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600" />
                 </div>
-                <h3 className="mt-4 text-lg md:text-xl font-medium text-blue-900">
+                <h3 className="mt-4 text-base md:text-lg lg:text-xl font-medium text-blue-900">
                   Patient Portal
                 </h3>
                 <p className="mt-2 text-sm md:text-base text-gray-600">
@@ -303,11 +301,11 @@ function Home() {
               </div>
 
               {/* Feature 6 */}
-              <div className="bg-blue-50 rounded-xl p-6 md:p-8 shadow-sm hover:shadow-md transition duration-300">
+              <div className="bg-blue-50 rounded-xl p-5 md:p-6 shadow-sm hover:shadow-md transition duration-300">
                 <div className="p-3 bg-blue-100 inline-block rounded-lg">
-                  <Award className="h-6 w-6 text-blue-600" />
+                  <Award className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600" />
                 </div>
-                <h3 className="mt-4 text-lg md:text-xl font-medium text-blue-900">
+                <h3 className="mt-4 text-base md:text-lg lg:text-xl font-medium text-blue-900">
                   Quality Assurance
                 </h3>
                 <p className="mt-2 text-sm md:text-base text-gray-600">
@@ -321,23 +319,23 @@ function Home() {
       </div>
 
       {/* Testimonials Section */}
-      <div className="bg-blue-50 py-12 md:py-16">
+      <div className="bg-blue-50 py-10 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center text-2xl font-extrabold text-blue-900 sm:text-3xl md:text-4xl">
+          <h2 className="text-center text-xl font-extrabold text-blue-900 sm:text-2xl md:text-3xl lg:text-4xl">
             Trusted by Healthcare Professionals
           </h2>
-          <div className="mt-12 space-y-6 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-x-6 lg:gap-x-8 md:gap-y-8 md:space-y-0">
+          <div className="mt-10 space-y-6 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8 md:space-y-0">
             {/* Testimonial 1 */}
-            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition duration-300">
+            <div className="bg-white p-5 md:p-6 rounded-xl shadow-sm hover:shadow-md transition duration-300">
               <div className="flex items-center mb-4">
-                <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-xl">
+                <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-lg sm:text-xl">
                   DC
                 </div>
-                <div className="ml-4">
-                  <h4 className="text-lg font-medium text-blue-900">
+                <div className="ml-3 sm:ml-4">
+                  <h4 className="text-base sm:text-lg font-medium text-blue-900">
                     Dr. Carla Thompson
                   </h4>
-                  <p className="text-sm text-gray-500">Family Physician</p>
+                  <p className="text-xs sm:text-sm text-gray-500">Family Physician</p>
                 </div>
               </div>
               <p className="text-sm md:text-base text-gray-600">
@@ -347,16 +345,16 @@ function Home() {
             </div>
 
             {/* Testimonial 2 */}
-            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition duration-300">
+            <div className="bg-white p-5 md:p-6 rounded-xl shadow-sm hover:shadow-md transition duration-300">
               <div className="flex items-center mb-4">
-                <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-xl">
+                <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-lg sm:text-xl">
                   JR
                 </div>
-                <div className="ml-4">
-                  <h4 className="text-lg font-medium text-blue-900">
+                <div className="ml-3 sm:ml-4">
+                  <h4 className="text-base sm:text-lg font-medium text-blue-900">
                     James Rodriguez
                   </h4>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-xs sm:text-sm text-gray-500">
                     Hospital Administrator
                   </p>
                 </div>
@@ -368,16 +366,16 @@ function Home() {
             </div>
 
             {/* Testimonial 3 */}
-            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition duration-300">
+            <div className="bg-white p-5 md:p-6 rounded-xl shadow-sm hover:shadow-md transition duration-300">
               <div className="flex items-center mb-4">
-                <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-xl">
+                <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-lg sm:text-xl">
                   LP
                 </div>
-                <div className="ml-4">
-                  <h4 className="text-lg font-medium text-blue-900">
+                <div className="ml-3 sm:ml-4">
+                  <h4 className="text-base sm:text-lg font-medium text-blue-900">
                     Dr. Lisa Park
                   </h4>
-                  <p className="text-sm text-gray-500">Pediatrician</p>
+                  <p className="text-xs sm:text-sm text-gray-500">Pediatrician</p>
                 </div>
               </div>
               <p className="text-sm md:text-base text-gray-600">
@@ -390,7 +388,7 @@ function Home() {
       </div>
 
       {/* Call to Action Section */}
-      <div className="relative py-12 md:py-16 bg-gradient-to-r from-blue-600 to-blue-800">
+      <div className="relative py-10 md:py-16 bg-gradient-to-r from-blue-600 to-blue-800">
         <div className="absolute inset-0 flex items-center justify-center opacity-10">
           <svg
             width="100%"
@@ -415,30 +413,26 @@ function Home() {
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
-            <h2 className="text-2xl font-extrabold tracking-tight text-white sm:text-3xl md:text-4xl">
+            <h2 className="text-xl font-extrabold tracking-tight text-white sm:text-2xl md:text-3xl lg:text-4xl">
               Ready to transform your healthcare practice?
             </h2>
-            <p className="mt-4 text-base md:text-xl text-blue-100 max-w-2xl mx-auto">
+            <p className="mt-3 text-sm sm:text-base md:text-lg lg:text-xl text-blue-100 max-w-2xl mx-auto">
               Join thousands of healthcare professionals already using CureHub
               to improve patient care.
             </p>
-            <div className="mt-8 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-              <div>
-                <a
-                  href="/signup"
-                  className="w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-blue-50 transition duration-200"
-                >
-                  Start Free Trial <ArrowRight className="ml-2 h-5 w-5" />
-                </a>
-              </div>
-              <div>
-                <a
-                  href="/demo"
-                  className="w-full inline-flex items-center justify-center px-5 py-3 border border-white text-base font-medium rounded-md text-white hover:bg-blue-700 transition duration-200"
-                >
-                  Request Demo
-                </a>
-              </div>
+            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+              <a
+                href="/signup"
+                className="w-full inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-md text-blue-600 bg-white hover:bg-blue-50 transition duration-200"
+              >
+                Start Free Trial <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+              </a>
+              <a
+                href="/demo"
+                className="w-full inline-flex items-center justify-center px-4 py-2 sm:px-5 sm:py-3 border border-white text-sm sm:text-base font-medium rounded-md text-white hover:bg-blue-700 transition duration-200"
+              >
+                Request Demo
+              </a>
             </div>
           </div>
         </div>
@@ -446,17 +440,17 @@ function Home() {
 
       {/* Footer */}
       <footer className="bg-white">
-        <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="max-w-7xl mx-auto py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
             <div>
-              <h3 className="text-sm font-semibold text-gray-500 tracking-wider uppercase">
+              <h3 className="text-xs sm:text-sm font-semibold text-gray-500 tracking-wider uppercase">
                 Solutions
               </h3>
-              <ul className="mt-4 space-y-4">
+              <ul className="mt-4 space-y-3 sm:space-y-4">
                 <li>
                   <a
                     href="#"
-                    className="text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
+                    className="text-xs sm:text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
                   >
                     For Hospitals
                   </a>
@@ -464,7 +458,7 @@ function Home() {
                 <li>
                   <a
                     href="#"
-                    className="text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
+                    className="text-xs sm:text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
                   >
                     For Clinics
                   </a>
@@ -472,7 +466,7 @@ function Home() {
                 <li>
                   <a
                     href="#"
-                    className="text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
+                    className="text-xs sm:text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
                   >
                     For Specialists
                   </a>
@@ -480,7 +474,7 @@ function Home() {
                 <li>
                   <a
                     href="#"
-                    className="text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
+                    className="text-xs sm:text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
                   >
                     For Patients
                   </a>
@@ -488,14 +482,14 @@ function Home() {
               </ul>
             </div>
             <div>
-              <h3 className="text-sm font-semibold text-gray-500 tracking-wider uppercase">
+              <h3 className="text-xs sm:text-sm font-semibold text-gray-500 tracking-wider uppercase">
                 Support
               </h3>
-              <ul className="mt-4 space-y-4">
+              <ul className="mt-4 space-y-3 sm:space-y-4">
                 <li>
                   <a
                     href="#"
-                    className="text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
+                    className="text-xs sm:text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
                   >
                     Pricing
                   </a>
@@ -503,7 +497,7 @@ function Home() {
                 <li>
                   <a
                     href="#"
-                    className="text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
+                    className="text-xs sm:text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
                   >
                     Documentation
                   </a>
@@ -511,7 +505,7 @@ function Home() {
                 <li>
                   <a
                     href="#"
-                    className="text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
+                    className="text-xs sm:text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
                   >
                     Guides
                   </a>
@@ -519,7 +513,7 @@ function Home() {
                 <li>
                   <a
                     href="#"
-                    className="text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
+                    className="text-xs sm:text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
                   >
                     API Status
                   </a>
@@ -527,14 +521,14 @@ function Home() {
               </ul>
             </div>
             <div>
-              <h3 className="text-sm font-semibold text-gray-500 tracking-wider uppercase">
+              <h3 className="text-xs sm:text-sm font-semibold text-gray-500 tracking-wider uppercase">
                 Company
               </h3>
-              <ul className="mt-4 space-y-4">
+              <ul className="mt-4 space-y-3 sm:space-y-4">
                 <li>
                   <a
                     href="#"
-                    className="text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
+                    className="text-xs sm:text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
                   >
                     About
                   </a>
@@ -542,7 +536,7 @@ function Home() {
                 <li>
                   <a
                     href="#"
-                    className="text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
+                    className="text-xs sm:text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
                   >
                     Blog
                   </a>
@@ -550,7 +544,7 @@ function Home() {
                 <li>
                   <a
                     href="#"
-                    className="text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
+                    className="text-xs sm:text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
                   >
                     Jobs
                   </a>
@@ -558,7 +552,7 @@ function Home() {
                 <li>
                   <a
                     href="#"
-                    className="text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
+                    className="text-xs sm:text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
                   >
                     Press
                   </a>
@@ -566,14 +560,14 @@ function Home() {
               </ul>
             </div>
             <div>
-              <h3 className="text-sm font-semibold text-gray-500 tracking-wider uppercase">
+              <h3 className="text-xs sm:text-sm font-semibold text-gray-500 tracking-wider uppercase">
                 Legal
               </h3>
-              <ul className="mt-4 space-y-4">
+              <ul className="mt-4 space-y-3 sm:space-y-4">
                 <li>
                   <a
                     href="#"
-                    className="text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
+                    className="text-xs sm:text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
                   >
                     Privacy
                   </a>
@@ -581,7 +575,7 @@ function Home() {
                 <li>
                   <a
                     href="#"
-                    className="text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
+                    className="text-xs sm:text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
                   >
                     Terms
                   </a>
@@ -589,7 +583,7 @@ function Home() {
                 <li>
                   <a
                     href="#"
-                    className="text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
+                    className="text-xs sm:text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
                   >
                     HIPAA
                   </a>
@@ -597,7 +591,7 @@ function Home() {
                 <li>
                   <a
                     href="#"
-                    className="text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
+                    className="text-xs sm:text-sm md:text-base text-gray-600 hover:text-blue-600 transition duration-200"
                   >
                     Compliance
                   </a>
@@ -605,14 +599,14 @@ function Home() {
               </ul>
             </div>
           </div>
-          <div className="mt-12 border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <div className="mt-8 sm:mt-12 border-t border-gray-200 pt-6 sm:pt-8 flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center">
-              <HeartPulse className="h-6 w-6 md:h-8 md:w-8 text-blue-600" />
-              <span className="ml-2 text-xl md:text-2xl font-bold text-blue-800">
+              <HeartPulse className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8 text-blue-600" />
+              <span className="ml-2 text-lg sm:text-xl md:text-2xl font-bold text-blue-800">
                 CureHub
               </span>
             </div>
-            <p className="mt-4 md:mt-0 text-sm md:text-base text-gray-500">
+            <p className="mt-4 md:mt-0 text-xs sm:text-sm md:text-base text-gray-500">
               &copy; 2025 CureHub. All rights reserved.
             </p>
           </div>

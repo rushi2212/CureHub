@@ -86,38 +86,38 @@ const AddPrescriptionForm = ({ appointment, onSuccess, doctorId }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="bg-white rounded-xl shadow-lg overflow-hidden"
+      className="bg-white rounded-xl shadow-lg overflow-hidden w-full max-w-4xl mx-auto"
     >
       {/* Header */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-800 px-6 py-4">
-        <h2 className="text-xl md:text-2xl font-bold text-white">
+      <div className="bg-gradient-to-r from-blue-600 to-blue-800 px-4 sm:px-6 py-3 sm:py-4">
+        <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white">
           Add Prescription
         </h2>
       </div>
 
       {/* Appointment Info Card */}
-      <div className="p-6">
-        <div className="bg-blue-50 rounded-lg p-4 mb-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="p-3 sm:p-4 md:p-6">
+        <div className="bg-blue-50 rounded-lg p-3 sm:p-4 mb-4 sm:mb-6 text-sm sm:text-base">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-4">
             <div>
-              <div className="flex items-center mb-2">
-                <span className="w-28 text-sm font-medium text-gray-600">
+              <div className="flex flex-col sm:flex-row sm:items-center mb-2">
+                <span className="sm:w-28 font-medium text-gray-600">
                   Appointment ID:
                 </span>
-                <span className="font-semibold text-gray-800">
+                <span className="font-semibold text-gray-800 break-all sm:break-normal">
                   {appointment.appointmentId}
                 </span>
               </div>
-              <div className="flex items-center mb-2">
-                <span className="w-28 text-sm font-medium text-gray-600">
+              <div className="flex flex-col sm:flex-row sm:items-center mb-2">
+                <span className="sm:w-28 font-medium text-gray-600">
                   Patient:
                 </span>
                 <span className="font-semibold text-gray-800">
                   {appointment.patientName}
                 </span>
               </div>
-              <div className="flex items-center">
-                <span className="w-28 text-sm font-medium text-gray-600">
+              <div className="flex flex-col sm:flex-row sm:items-center">
+                <span className="sm:w-28 font-medium text-gray-600">
                   Email:
                 </span>
                 <span className="font-semibold text-gray-800 truncate">
@@ -125,29 +125,29 @@ const AddPrescriptionForm = ({ appointment, onSuccess, doctorId }) => {
                 </span>
               </div>
             </div>
-            <div>
-              <div className="flex items-center mb-2">
-                <span className="w-28 text-sm font-medium text-gray-600">
+            <div className="mt-3 md:mt-0">
+              <div className="flex flex-col sm:flex-row sm:items-center mb-2">
+                <span className="sm:w-28 font-medium text-gray-600">
                   Date:
                 </span>
                 <span className="font-semibold text-gray-800">
                   {appointment.date}
                 </span>
               </div>
-              <div className="flex items-center mb-2">
-                <span className="w-28 text-sm font-medium text-gray-600">
+              <div className="flex flex-col sm:flex-row sm:items-center mb-2">
+                <span className="sm:w-28 font-medium text-gray-600">
                   Time:
                 </span>
                 <span className="font-semibold text-gray-800">
                   {appointment.time}
                 </span>
               </div>
-              <div className="flex items-center">
-                <span className="w-28 text-sm font-medium text-gray-600">
+              <div className="flex flex-col sm:flex-row sm:items-center">
+                <span className="sm:w-28 font-medium text-gray-600">
                   Status:
                 </span>
                 <span
-                  className={`px-2 py-1 text-xs font-medium rounded-full ${
+                  className={`px-2 py-1 text-xs font-medium rounded-full w-fit ${
                     appointment.status === "Accepted"
                       ? "bg-green-100 text-green-800"
                       : "bg-gray-100 text-gray-800"
@@ -159,11 +159,11 @@ const AddPrescriptionForm = ({ appointment, onSuccess, doctorId }) => {
             </div>
           </div>
           <div className="mt-3 pt-3 border-t border-blue-100">
-            <div className="flex items-start">
-              <span className="w-28 text-sm font-medium text-gray-600">
+            <div className="flex flex-col sm:flex-row sm:items-start">
+              <span className="sm:w-28 font-medium text-gray-600">
                 Symptoms:
               </span>
-              <span className="font-semibold text-gray-800">
+              <span className="font-semibold text-gray-800 mt-1 sm:mt-0">
                 {appointment.symptoms}
               </span>
             </div>
@@ -171,7 +171,7 @@ const AddPrescriptionForm = ({ appointment, onSuccess, doctorId }) => {
         </div>
 
         {error && (
-          <div className="mb-6 bg-red-50 border-l-4 border-red-500 p-4 rounded-r-md">
+          <div className="mb-4 sm:mb-6 bg-red-50 border-l-4 border-red-500 p-3 rounded-r-md">
             <div className="flex">
               <div className="flex-shrink-0">
                 <svg
@@ -200,21 +200,21 @@ const AddPrescriptionForm = ({ appointment, onSuccess, doctorId }) => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="mb-5 bg-gray-50 p-4 rounded-lg border border-gray-200 relative"
+              className="mb-4 sm:mb-5 bg-gray-50 p-3 sm:p-4 rounded-lg border border-gray-200 relative"
             >
               <div className="absolute top-2 right-2 bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded-full">
                 #{index + 1}
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-4 mt-3">
-                <div className="md:col-span-5">
+              <div className="grid grid-cols-1 gap-3 sm:gap-4 mt-3">
+                <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Medicine Name
                   </label>
                   <input
                     type="text"
                     placeholder="e.g. Paracetamol"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                    className="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm sm:text-base"
                     value={prescription.medicine}
                     onChange={(e) =>
                       handlePrescriptionChange(
@@ -227,14 +227,14 @@ const AddPrescriptionForm = ({ appointment, onSuccess, doctorId }) => {
                   />
                 </div>
 
-                <div className="md:col-span-3">
+                <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Dosage
                   </label>
                   <input
                     type="text"
                     placeholder="e.g. 500mg"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                    className="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm sm:text-base"
                     value={prescription.dosage}
                     onChange={(e) =>
                       handlePrescriptionChange(index, "dosage", e.target.value)
@@ -243,14 +243,14 @@ const AddPrescriptionForm = ({ appointment, onSuccess, doctorId }) => {
                   />
                 </div>
 
-                <div className="md:col-span-3">
+                <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Instructions
                   </label>
                   <input
                     type="text"
                     placeholder="e.g. Twice daily after meals"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                    className="w-full px-3 sm:px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm sm:text-base"
                     value={prescription.instructions}
                     onChange={(e) =>
                       handlePrescriptionChange(
@@ -262,12 +262,12 @@ const AddPrescriptionForm = ({ appointment, onSuccess, doctorId }) => {
                   />
                 </div>
 
-                <div className="md:col-span-1 flex items-end justify-center">
+                <div className="flex justify-end">
                   {index === prescriptions.length - 1 ? (
                     <button
                       type="button"
                       onClick={handleAddPrescription}
-                      className="p-2 bg-green-100 text-green-600 rounded-full hover:bg-green-200 transition-all"
+                      className="p-2 bg-green-100 text-green-600 rounded-full hover:bg-green-200 transition-all flex items-center"
                     >
                       <svg
                         className="h-5 w-5"
@@ -282,12 +282,13 @@ const AddPrescriptionForm = ({ appointment, onSuccess, doctorId }) => {
                           d="M12 6v6m0 0v6m0-6h6m-6 0H6"
                         />
                       </svg>
+                      <span className="ml-1 text-sm hidden sm:inline">Add</span>
                     </button>
                   ) : (
                     <button
                       type="button"
                       onClick={() => handleRemovePrescription(index)}
-                      className="p-2 bg-red-100 text-red-600 rounded-full hover:bg-red-200 transition-all"
+                      className="p-2 bg-red-100 text-red-600 rounded-full hover:bg-red-200 transition-all flex items-center"
                     >
                       <svg
                         className="h-5 w-5"
@@ -302,6 +303,7 @@ const AddPrescriptionForm = ({ appointment, onSuccess, doctorId }) => {
                           d="M6 18L18 6M6 6l12 12"
                         />
                       </svg>
+                      <span className="ml-1 text-sm hidden sm:inline">Remove</span>
                     </button>
                   )}
                 </div>
@@ -309,11 +311,36 @@ const AddPrescriptionForm = ({ appointment, onSuccess, doctorId }) => {
             </motion.div>
           ))}
 
-          <div className="mt-8">
+          {/* Show a "+" button to add prescription on small screens - fixed at bottom */}
+          {prescriptions.length === 1 && (
+            <div className="fixed bottom-4 right-4 sm:hidden z-10">
+              <button
+                type="button"
+                onClick={handleAddPrescription}
+                className="p-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all"
+              >
+                <svg
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                  />
+                </svg>
+              </button>
+            </div>
+          )}
+
+          <div className="mt-6 sm:mt-8">
             <button
               type="submit"
               disabled={loading}
-              className={`w-full flex items-center justify-center py-3 px-4 rounded-lg text-white font-medium transition-all ${
+              className={`w-full flex items-center justify-center py-2 sm:py-3 px-4 rounded-lg text-white font-medium transition-all text-sm sm:text-base ${
                 loading
                   ? "bg-blue-400 cursor-not-allowed"
                   : "bg-blue-600 hover:bg-blue-700 shadow-md hover:shadow-lg"
@@ -322,7 +349,7 @@ const AddPrescriptionForm = ({ appointment, onSuccess, doctorId }) => {
               {loading ? (
                 <>
                   <svg
-                    className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                    className="animate-spin -ml-1 mr-2 h-4 w-4 sm:h-5 sm:w-5 text-white"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -341,12 +368,12 @@ const AddPrescriptionForm = ({ appointment, onSuccess, doctorId }) => {
                       d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                     ></path>
                   </svg>
-                  Saving Prescription...
+                  <span className="sm:inline">Saving...</span>
                 </>
               ) : (
                 <>
                   <svg
-                    className="h-5 w-5 mr-2"
+                    className="h-4 w-4 sm:h-5 sm:w-5 mr-2"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"

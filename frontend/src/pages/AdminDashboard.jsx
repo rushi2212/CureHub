@@ -17,6 +17,7 @@ import {
   LogOut,
   Menu,
   X,
+  Search,
 } from "lucide-react";
 
 function AdminDashboard() {
@@ -25,14 +26,20 @@ function AdminDashboard() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [doctors, setDoctors] = useState([]);
   const [patients, setPatients] = useState([]);
+  const [isMobile, setIsMobile] = useState(false);
   
   // Check if screen is mobile on component mount and window resize
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 768) {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      
+      if (mobile) {
         setSidebarOpen(false);
       } else {
         setSidebarOpen(true);
+        // Close mobile menu when switching to desktop
+        setMobileMenuOpen(false);
       }
     };
     
@@ -52,11 +59,11 @@ function AdminDashboard() {
     closed: { width: "80px", transition: { duration: 0.3 } },
     mobileOpen: { 
       x: 0,
-      transition: { duration: 0.3 }
+      transition: { duration: 0.3, ease: "easeOut" }
     },
     mobileClosed: { 
       x: "-100%",
-      transition: { duration: 0.3 }
+      transition: { duration: 0.3, ease: "easeIn" }
     }
   };
 
@@ -99,7 +106,7 @@ function AdminDashboard() {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const token = localStorage.getItem("adminAuth"); // Use your admin token key here
+        const token = localStorage.getItem("adminAuth");
         if (!token) {
           toast.error("Authentication required");
           return;
@@ -127,7 +134,7 @@ function AdminDashboard() {
   useEffect(() => {
     const fetchPatients = async () => {
       try {
-        const token = localStorage.getItem("adminAuth"); // Make sure it's your admin token
+        const token = localStorage.getItem("adminAuth");
         if (!token) {
           toast.error("Authentication required");
           return;
@@ -155,7 +162,7 @@ function AdminDashboard() {
   const handleSidebarItemClick = (component) => {
     setActiveComponent(component);
     // On mobile, close the sidebar after item selection
-    if (window.innerWidth < 768) {
+    if (isMobile) {
       setMobileMenuOpen(false);
     }
   };
@@ -168,6 +175,7 @@ function AdminDashboard() {
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="p-2 rounded-full hover:bg-gray-100 transition-colors"
+          aria-label="Toggle menu"
         >
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -178,6 +186,7 @@ function AdminDashboard() {
         <div 
           className="md:hidden fixed inset-0 bg-black bg-opacity-50 z-20"
           onClick={() => setMobileMenuOpen(false)}
+          aria-hidden="true"
         />
       )}
 
@@ -185,16 +194,17 @@ function AdminDashboard() {
       <motion.div
         className={`bg-gradient-to-b from-blue-800 to-blue-600 text-white shadow-xl 
                    fixed md:relative z-30 h-full 
-                   ${window.innerWidth < 768 ? 'w-64' : ''}`}
+                   ${isMobile ? 'w-64' : ''}`}
         variants={sidebarVariants}
         animate={
-          window.innerWidth < 768 
+          isMobile 
             ? (mobileMenuOpen ? "mobileOpen" : "mobileClosed") 
             : (sidebarOpen ? "open" : "closed")
         }
+        initial={isMobile ? "mobileClosed" : "open"}
       >
         <div className="p-4 flex items-center justify-between">
-          {(sidebarOpen || window.innerWidth < 768) && (
+          {(sidebarOpen || isMobile) && (
             <motion.h2
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -206,32 +216,35 @@ function AdminDashboard() {
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
             className="p-2 rounded-full hover:bg-blue-700 transition-colors hidden md:block"
+            aria-label={sidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
           >
             {sidebarOpen ? "←" : "→"}
           </button>
         </div>
-        <nav className="mt-8">
-          <SidebarItem
-            icon={<Home size={20} />}
-            text="Dashboard"
-            isActive={activeComponent === "dashboard"}
-            onClick={() => handleSidebarItemClick("dashboard")}
-            isExpanded={sidebarOpen || window.innerWidth < 768}
-          />
-          <SidebarItem
-            icon={<UserPlus size={20} />}
-            text="Add Doctor"
-            isActive={activeComponent === "addDoctor"}
-            onClick={() => handleSidebarItemClick("addDoctor")}
-            isExpanded={sidebarOpen || window.innerWidth < 768}
-          />
-          <SidebarItem
-            icon={<Users size={20} />}
-            text="Doctor List"
-            isActive={activeComponent === "doctorList"}
-            onClick={() => handleSidebarItemClick("doctorList")}
-            isExpanded={sidebarOpen || window.innerWidth < 768}
-          />
+        <nav className="mt-6 flex flex-col h-[calc(100%-80px)] justify-between">
+          <div>
+            <SidebarItem
+              icon={<Home size={20} />}
+              text="Dashboard"
+              isActive={activeComponent === "dashboard"}
+              onClick={() => handleSidebarItemClick("dashboard")}
+              isExpanded={sidebarOpen || isMobile}
+            />
+            <SidebarItem
+              icon={<UserPlus size={20} />}
+              text="Add Doctor"
+              isActive={activeComponent === "addDoctor"}
+              onClick={() => handleSidebarItemClick("addDoctor")}
+              isExpanded={sidebarOpen || isMobile}
+            />
+            <SidebarItem
+              icon={<Users size={20} />}
+              text="Doctor List"
+              isActive={activeComponent === "doctorList"}
+              onClick={() => handleSidebarItemClick("doctorList")}
+              isExpanded={sidebarOpen || isMobile}
+            />
+          </div>
 
           <div className="mt-auto">
             <SidebarItem
@@ -239,7 +252,7 @@ function AdminDashboard() {
               text="Logout"
               isActive={false}
               onClick={() => redirectToLogin()}
-              isExpanded={sidebarOpen || window.innerWidth < 768}
+              isExpanded={sidebarOpen || isMobile}
             />
           </div>
         </nav>
@@ -265,6 +278,12 @@ function AdminDashboard() {
                   placeholder="Search..."
                   className="px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
+                <button 
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                  aria-label="Search"
+                >
+                  <Search size={18} />
+                </button>
               </div>
               <div className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold">
                 A
@@ -285,7 +304,7 @@ function AdminDashboard() {
           </h1>
         </div>
 
-        {/* Main Content */}
+        {/* Main Content Area */}
         <motion.div
           className="p-4 md:p-6 flex-1 overflow-auto"
           initial="hidden"
@@ -317,7 +336,7 @@ const SidebarItem = ({ icon, text, isActive, onClick, isExpanded }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="ml-4"
+          className="ml-4 whitespace-nowrap"
         >
           {text}
         </motion.span>
@@ -338,7 +357,7 @@ const DashboardOverview = ({ doctors, patients }) => {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
       <motion.div
         className="bg-white rounded-lg shadow-md p-4 md:p-6 border-l-4 border-blue-500"
         variants={itemVariants}
@@ -360,24 +379,25 @@ const DashboardOverview = ({ doctors, patients }) => {
       </motion.div>
 
       <motion.div
-        className="bg-white rounded-lg shadow-md p-4 md:p-6 col-span-1 md:col-span-2 lg:col-span-3"
+        className="bg-white rounded-lg shadow-md p-4 md:p-6 col-span-1 sm:col-span-2 lg:col-span-3"
         variants={itemVariants}
       >
-        <h3 className="text-lg font-bold text-gray-700 mb-4">
-          Recent Activity
-        </h3>
-        <div className="space-y-4">
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="text-lg font-bold text-gray-700">Recent Activity</h3>
+          <button className="text-sm text-blue-600 hover:underline">View All</button>
+        </div>
+        <div className="space-y-4 max-h-80 overflow-y-auto">
           {[1, 2, 3, 4].map((item) => (
             <div
               key={item}
               className="flex items-start space-x-4 p-3 hover:bg-gray-50 rounded-lg transition-colors"
             >
-              <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-500">
+              <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-500 flex-shrink-0">
                 {item}
               </div>
-              <div>
-                <p className="font-medium">New doctor registered</p>
-                <p className="text-sm text-gray-500">
+              <div className="flex-1 min-w-0">
+                <p className="font-medium text-sm sm:text-base truncate">New doctor registered</p>
+                <p className="text-xs sm:text-sm text-gray-500 truncate">
                   Dr. John Smith was added to the system
                 </p>
                 <p className="text-xs text-gray-400 mt-1">2 hours ago</p>

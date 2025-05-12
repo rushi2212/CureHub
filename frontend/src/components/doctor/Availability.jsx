@@ -92,7 +92,7 @@ const Availability = ({ doctorId }) => {
 
   if (loading) {
     return (
-      <div className="p-6 flex justify-center">
+      <div className="p-4 flex justify-center">
         <div className="animate-pulse flex flex-col items-center">
           <div className="w-12 h-12 rounded-full bg-blue-200 mb-4"></div>
           <div className="h-4 w-32 bg-blue-200 rounded mb-3"></div>
@@ -103,21 +103,21 @@ const Availability = ({ doctorId }) => {
   }
 
   return (
-    <div className="p-6">
-      <div className="flex items-center mb-6">
-        <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+    <div className="p-4 md:p-6">
+      <div className="flex flex-col sm:flex-row items-center mb-6">
+        <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-3 sm:mb-0 sm:mr-4">
           <Calendar className="text-blue-600" size={24} />
         </div>
-        <div>
-          <h2 className="text-2xl font-bold text-gray-800">Manage Availability</h2>
-          <p className="text-gray-500">Set your available time slots for patient appointments</p>
+        <div className="text-center sm:text-left">
+          <h2 className="text-xl md:text-2xl font-bold text-gray-800">Manage Availability</h2>
+          <p className="text-sm md:text-base text-gray-500">Set your available time slots for patient appointments</p>
         </div>
       </div>
       
-      <div className="bg-white rounded-lg border border-blue-100 p-6 mb-8 shadow-sm hover:shadow-md transition-shadow">
+      <div className="bg-white rounded-lg border border-blue-100 p-4 md:p-6 mb-6 md:mb-8 shadow-sm hover:shadow-md transition-shadow">
         <h3 className="text-lg font-semibold mb-4 text-gray-800">Add New Time Slot</h3>
-        <div className="flex flex-wrap items-end gap-4">
-          <div>
+        <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+          <div className="w-full sm:w-auto">
             <label className="block text-sm font-medium text-gray-700 mb-1">Date</label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -126,14 +126,14 @@ const Availability = ({ doctorId }) => {
               <DatePicker
                 selected={newDate}
                 onChange={setNewDate}
-                className="pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 minDate={new Date()}
                 maxDate={new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0)}
                 dateFormat="MMMM d, yyyy"
               />
             </div>
           </div>
-          <div>
+          <div className="w-full sm:w-auto">
             <label className="block text-sm font-medium text-gray-700 mb-1">Time Slot</label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -143,43 +143,45 @@ const Availability = ({ doctorId }) => {
                 type="time"
                 value={newTimeSlot}
                 onChange={e => setNewTimeSlot(e.target.value)}
-                className="pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
           </div>
-          <button
-            onClick={handleAddTimeSlot}
-            disabled={addingSlot}
-            className="flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-md hover:from-blue-600 hover:to-indigo-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition transform hover:scale-105 active:scale-95 disabled:opacity-70"
-          >
-            {addingSlot ? (
-              <>
-                <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-white" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
-                </svg>
-                Adding...
-              </>
-            ) : (
-              <>
-                <Plus size={18} className="mr-1" />
-                Add Slot
-              </>
-            )}
-          </button>
+          <div className="w-full sm:w-auto sm:self-end mt-2 sm:mt-0">
+            <button
+              onClick={handleAddTimeSlot}
+              disabled={addingSlot}
+              className="w-full sm:w-auto flex items-center justify-center px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-md hover:from-blue-600 hover:to-indigo-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition transform hover:scale-105 active:scale-95 disabled:opacity-70"
+            >
+              {addingSlot ? (
+                <>
+                  <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-white" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+                  </svg>
+                  Adding...
+                </>
+              ) : (
+                <>
+                  <Plus size={18} className="mr-1" />
+                  Add Slot
+                </>
+              )}
+            </button>
+          </div>
         </div>
       </div>
 
       <div>
         <h3 className="text-lg font-semibold mb-4 text-gray-800">Your Availability Schedule</h3>
         {availability.length === 0 ? (
-          <div className="bg-blue-50 border border-blue-100 rounded-lg p-6 text-center">
+          <div className="bg-blue-50 border border-blue-100 rounded-lg p-4 md:p-6 text-center">
             <Clock size={40} className="text-blue-400 mx-auto mb-2" />
             <p className="text-gray-600">No availability slots added yet.</p>
             <p className="text-sm text-gray-500 mt-1">Add time slots above to start accepting appointments.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
             {availability
               .map(day => {
                 const [y, m, d] = day.date.split('-').map(Number);
@@ -195,8 +197,8 @@ const Availability = ({ doctorId }) => {
                 const date = day.localDate;
                 return (
                   <div key={day.date} className="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow transition-shadow overflow-hidden">
-                    <div className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-4 py-3">
-                      <h4 className="font-medium">
+                    <div className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-3 py-2 md:px-4 md:py-3">
+                      <h4 className="font-medium text-sm md:text-base">
                         {date.toLocaleDateString('en-US', {
                           weekday: 'long',
                           month: 'short',
@@ -204,12 +206,12 @@ const Availability = ({ doctorId }) => {
                         })}
                       </h4>
                     </div>
-                    <div className="p-4">
+                    <div className="p-3 md:p-4">
                       <div className="flex flex-wrap gap-2">
                         {day.timeSlots.map((time, idx) => (
-                          <div key={idx} className="group bg-blue-50 rounded-full px-3 py-1 flex items-center">
+                          <div key={idx} className="group bg-blue-50 rounded-full px-2 py-1 md:px-3 md:py-1 flex items-center">
                             <Clock size={14} className="text-blue-500 mr-1" />
-                            <span className="text-sm">{time}</span>
+                            <span className="text-xs md:text-sm">{time}</span>
                             <button
                               onClick={() => handleRemoveTimeSlot(day.date, time)}
                               className="ml-1 opacity-0 group-hover:opacity-100 transition-opacity"

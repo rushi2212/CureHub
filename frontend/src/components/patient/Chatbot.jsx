@@ -98,29 +98,29 @@ const Chatbot = () => {
   };
 
   return (
-    <div className="bg-gradient-to-br from-blue-50 to-purple-50 min-h-screen flex items-center justify-center p-4">
-      <div className="bg-white rounded-xl shadow-xl w-full max-w-md flex flex-col h-[600px] overflow-hidden border border-gray-100">
+    <div className="bg-gradient-to-br from-blue-50 to-purple-50 min-h-screen flex items-center justify-center p-2 sm:p-4">
+      <div className="bg-white rounded-xl shadow-xl w-full max-w-full sm:max-w-md md:max-w-lg flex flex-col h-screen sm:h-[600px] overflow-hidden border border-gray-100">
         {/* Header */}
-        <div className="px-6 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-t-xl border-b border-blue-700 shadow-sm">
+        <div className="px-4 sm:px-6 py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-t-xl border-b border-blue-700 shadow-sm">
           <div className="flex items-center">
-            <Activity className="h-5 w-5 mr-2" />
-            <h2 className="text-lg font-bold">Medical Symptom Checker</h2>
+            <Activity className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
+            <h2 className="text-base sm:text-lg font-bold">Medical Symptom Checker</h2>
           </div>
-          <p className="text-blue-100 text-sm mt-1">Get preliminary insights about your symptoms</p>
+          <p className="text-blue-100 text-xs sm:text-sm mt-1">Get preliminary insights about your symptoms</p>
         </div>
         
         {/* Chat Messages */}
         <div 
           ref={chatContainerRef}
-          className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent"
+          className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent"
         >
           {conversation.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-center text-gray-500 space-y-2">
-              <div className="bg-blue-100 p-3 rounded-full">
-                <Activity className="h-6 w-6 text-blue-600" />
+              <div className="bg-blue-100 p-2 sm:p-3 rounded-full">
+                <Activity className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600" />
               </div>
-              <p className="font-medium">Welcome to the Symptom Checker</p>
-              <p className="text-sm max-w-xs">Share your symptoms, age, and gender to get a preliminary assessment</p>
+              <p className="font-medium text-sm sm:text-base">Welcome to the Symptom Checker</p>
+              <p className="text-xs sm:text-sm max-w-xs">Share your symptoms, age, and gender to get a preliminary assessment</p>
             </div>
           ) : (
             conversation.map((msg, index) => (
@@ -129,18 +129,18 @@ const Chatbot = () => {
                 className={`flex ${msg.sender === "You" ? "justify-end" : "justify-start"}`}
               >
                 <div 
-                  className={`max-w-[80%] rounded-2xl px-4 py-2 shadow-sm
+                  className={`max-w-[85%] sm:max-w-[80%] rounded-2xl px-3 sm:px-4 py-2 shadow-sm
                     ${msg.sender === "You" 
                       ? "bg-blue-600 text-white rounded-tr-none" 
                       : "bg-gray-100 text-gray-800 rounded-tl-none border border-gray-200"}`
                   }
                 >
                   {msg.sender === "Bot" ? (
-                    <div className="text-sm">
+                    <div className="text-xs sm:text-sm">
                       {formatResponse(msg.text)}
                     </div>
                   ) : (
-                    <p className="text-sm">{msg.text}</p>
+                    <p className="text-xs sm:text-sm">{msg.text}</p>
                   )}
                 </div>
               </div>
@@ -149,22 +149,22 @@ const Chatbot = () => {
           
           {loading && (
             <div className="flex justify-start">
-              <div className="bg-gray-100 rounded-2xl rounded-tl-none px-4 py-3 shadow-sm border border-gray-200 flex items-center">
-                <Loader className="h-4 w-4 text-blue-600 animate-spin mr-2" />
-                <span className="text-sm text-gray-600">Analyzing symptoms...</span>
+              <div className="bg-gray-100 rounded-2xl rounded-tl-none px-3 sm:px-4 py-2 sm:py-3 shadow-sm border border-gray-200 flex items-center">
+                <Loader className="h-3 w-3 sm:h-4 sm:w-4 text-blue-600 animate-spin mr-2" />
+                <span className="text-xs sm:text-sm text-gray-600">Analyzing symptoms...</span>
               </div>
             </div>
           )}
         </div>
         
         {/* Input Form */}
-        <div className="border-t border-gray-200 bg-gray-50 p-4 space-y-3">
-          <div className="grid grid-cols-2 gap-3">
+        <div className="border-t border-gray-200 bg-gray-50 p-3 sm:p-4 space-y-2 sm:space-y-3">
+          <div className="grid grid-cols-2 gap-2 sm:gap-3">
             <div>
               <label className="block text-xs font-medium text-gray-700 mb-1">Age</label>
               <input
                 type="number"
-                className="w-full p-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm"
+                className="w-full p-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-xs sm:text-sm"
                 placeholder="Your age"
                 value={age}
                 onChange={(e) => setAge(e.target.value)}
@@ -174,7 +174,7 @@ const Chatbot = () => {
               <label className="block text-xs font-medium text-gray-700 mb-1">Gender</label>
               <div className="relative">
                 <select
-                  className="w-full p-2 rounded-lg border border-gray-300 appearance-none bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm"
+                  className="w-full p-2 rounded-lg border border-gray-300 appearance-none bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-xs sm:text-sm"
                   value={gender}
                   onChange={(e) => setGender(e.target.value)}
                 >
@@ -182,7 +182,7 @@ const Chatbot = () => {
                   <option value="female">Female</option>
                   <option value="other">Other</option>
                 </select>
-                <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-500 pointer-events-none" />
+                <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 h-3 w-3 sm:h-4 sm:w-4 text-gray-500 pointer-events-none" />
               </div>
             </div>
           </div>
@@ -190,7 +190,7 @@ const Chatbot = () => {
           <div>
             <label className="block text-xs font-medium text-gray-700 mb-1">Symptoms</label>
             <textarea
-              className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all resize-none text-sm"
+              className="w-full p-2 sm:p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all resize-none text-xs sm:text-sm"
               placeholder="Describe your symptoms in detail..."
               rows={2}
               value={symptoms}
@@ -200,14 +200,14 @@ const Chatbot = () => {
           </div>
           
           <button
-            className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors duration-200 flex items-center justify-center font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-2 sm:py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors duration-200 flex items-center justify-center text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
             onClick={handleSend}
             disabled={!symptoms.trim() || !age.trim() || loading}
           >
             {loading ? (
-              <Loader className="h-4 w-4 mr-2 animate-spin" />
+              <Loader className="h-3 w-3 sm:h-4 sm:w-4 mr-2 animate-spin" />
             ) : (
-              <Send className="h-4 w-4 mr-2" />
+              <Send className="h-3 w-3 sm:h-4 sm:w-4 mr-2" />
             )}
             Send
           </button>

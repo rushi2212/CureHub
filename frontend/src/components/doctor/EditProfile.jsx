@@ -47,31 +47,31 @@ const DoctorProfileCard = ({ doctor, setDoctor }) => {
 
   if (isEditing) {
     return (
-      <div className="p-6">
-        <div className="flex items-center mb-6">
-          <div className="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center mr-4">
+      <div className="p-4 sm:p-6">
+        <div className="flex flex-col sm:flex-row sm:items-center mb-6 gap-3">
+          <div className="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center">
             <User className="text-indigo-600" size={24} />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-gray-800">Edit Profile</h2>
-            <p className="text-gray-500">Update your personal and professional information</p>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Edit Profile</h2>
+            <p className="text-sm sm:text-base text-gray-500">Update your personal and professional information</p>
           </div>
         </div>
         
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             <div className="group">
               <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
               <div className="mt-1 relative rounded-md shadow-sm">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <User className="h-5 w-5 text-gray-400" />
+                  <User className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
                 </div>
                 <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
+                  className="block w-full pl-10 pr-3 py-2 text-sm sm:text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
                   required
                 />
               </div>
@@ -81,14 +81,14 @@ const DoctorProfileCard = ({ doctor, setDoctor }) => {
               <label className="block text-sm font-medium text-gray-700 mb-1">Mobile Number</label>
               <div className="mt-1 relative rounded-md shadow-sm">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Phone className="h-5 w-5 text-gray-400" />
+                  <Phone className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
                 </div>
                 <input
                   type="text"
                   name="mobile"
                   value={formData.mobile}
                   onChange={handleChange}
-                  className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
+                  className="block w-full pl-10 pr-3 py-2 text-sm sm:text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
                 />
               </div>
             </div>
@@ -100,7 +100,7 @@ const DoctorProfileCard = ({ doctor, setDoctor }) => {
                 name="age"
                 value={formData.age}
                 onChange={handleChange}
-                className="block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
+                className="block w-full px-3 py-2 text-sm sm:text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
               />
             </div>
             
@@ -110,7 +110,7 @@ const DoctorProfileCard = ({ doctor, setDoctor }) => {
                 name="gender"
                 value={formData.gender}
                 onChange={handleChange}
-                className="block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
+                className="block w-full px-3 py-2 text-sm sm:text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
               >
                 <option value="">Select</option>
                 <option value="Male">Male</option>
@@ -123,14 +123,14 @@ const DoctorProfileCard = ({ doctor, setDoctor }) => {
               <label className="block text-sm font-medium text-gray-700 mb-1">Specialization</label>
               <div className="mt-1 relative rounded-md shadow-sm">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Award className="h-5 w-5 text-gray-400" />
+                  <Award className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
                 </div>
                 <input
                   type="text"
                   name="specialization"
                   value={formData.specialization}
                   onChange={handleChange}
-                  className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
+                  className="block w-full pl-10 pr-3 py-2 text-sm sm:text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
                 />
               </div>
             </div>
@@ -139,14 +139,14 @@ const DoctorProfileCard = ({ doctor, setDoctor }) => {
               <label className="block text-sm font-medium text-gray-700 mb-1">Degree</label>
               <div className="mt-1 relative rounded-md shadow-sm">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Book className="h-5 w-5 text-gray-400" />
+                  <Book className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
                 </div>
                 <input
                   type="text"
                   name="degree"
                   value={formData.degree}
                   onChange={handleChange}
-                  className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
+                  className="block w-full pl-10 pr-3 py-2 text-sm sm:text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
                 />
               </div>
             </div>
@@ -155,14 +155,14 @@ const DoctorProfileCard = ({ doctor, setDoctor }) => {
               <label className="block text-sm font-medium text-gray-700 mb-1">Experience</label>
               <div className="mt-1 relative rounded-md shadow-sm">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Clock className="h-5 w-5 text-gray-400" />
+                  <Clock className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
                 </div>
                 <input
                   type="text"
                   name="experience"
                   value={formData.experience}
                   onChange={handleChange}
-                  className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
+                  className="block w-full pl-10 pr-3 py-2 text-sm sm:text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
                   placeholder="e.g. 5 years"
                 />
               </div>
@@ -173,31 +173,31 @@ const DoctorProfileCard = ({ doctor, setDoctor }) => {
             <label className="block text-sm font-medium text-gray-700 mb-1">Professional Bio</label>
             <div className="mt-1 relative rounded-md shadow-sm">
               <div className="absolute top-3 left-3 flex items-start pointer-events-none">
-                <FileText className="h-5 w-5 text-gray-400" />
+                <FileText className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
               </div>
               <textarea
                 name="bio"
                 value={formData.bio}
                 onChange={handleChange}
-                className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
-                rows="5"
+                className="block w-full pl-10 pr-3 py-2 text-sm sm:text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
+                rows="4"
                 placeholder="Write a short professional bio..."
               />
             </div>
           </div>
           
-          <div className="flex justify-end space-x-4">
+          <div className="flex flex-col sm:flex-row sm:justify-end space-y-3 sm:space-y-0 sm:space-x-4 pt-2">
             <button
               type="button"
               onClick={() => setIsEditing(false)}
-              className="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="w-full sm:w-auto inline-flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={loading}
-              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-indigo-600 to-blue-500 text-white font-medium rounded-md shadow-sm hover:from-indigo-700 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition transform hover:scale-105 active:scale-95 disabled:opacity-70"
+              className="w-full sm:w-auto inline-flex justify-center items-center px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-indigo-600 to-blue-500 text-white font-medium rounded-md shadow-sm hover:from-indigo-700 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition transform hover:scale-105 active:scale-95 disabled:opacity-70"
             >
               {loading ? (
                 <>
@@ -220,20 +220,20 @@ const DoctorProfileCard = ({ doctor, setDoctor }) => {
   return (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden">
       {/* Header with avatar and name */}
-      <div className="bg-gradient-to-r from-indigo-600 to-blue-500 p-6">
-        <div className="flex justify-between items-start">
-          <div className="flex items-center">
-            <div className="h-20 w-20 rounded-full bg-white flex items-center justify-center border-4 border-white">
-              <User className="h-12 w-12 text-indigo-600" />
+      <div className="bg-gradient-to-r from-indigo-600 to-blue-500 p-4 sm:p-6">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-center">
+            <div className="h-16 w-16 sm:h-20 sm:w-20 rounded-full bg-white flex items-center justify-center border-4 border-white mx-auto sm:mx-0">
+              <User className="h-8 w-8 sm:h-12 sm:w-12 text-indigo-600" />
             </div>
-            <div className="ml-4 text-white">
-              <h2 className="text-2xl font-bold">{doctor.name || 'Doctor'}</h2>
+            <div className="ml-0 sm:ml-4 text-white text-center sm:text-left mt-2 sm:mt-0">
+              <h2 className="text-xl sm:text-2xl font-bold">{doctor.name || 'Doctor'}</h2>
               <p className="text-indigo-100">{doctor.specialization || 'Specialist'}</p>
             </div>
           </div>
           <button 
             onClick={() => setIsEditing(true)}
-            className="bg-white text-indigo-600 flex items-center px-4 py-2 rounded-md font-medium hover:bg-indigo-50 transition transform hover:scale-105 active:scale-95"
+            className="bg-white text-indigo-600 flex items-center justify-center px-4 py-2 rounded-md font-medium hover:bg-indigo-50 transition transform hover:scale-105 active:scale-95 w-full sm:w-auto"
           >
             <Edit className="h-4 w-4 mr-2" />
             Edit Profile
@@ -242,44 +242,44 @@ const DoctorProfileCard = ({ doctor, setDoctor }) => {
       </div>
 
       {/* Details */}
-      <div className="p-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="p-4 sm:p-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {/* Basic Information */}
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-gray-800 border-b pb-2">Personal Information</h3>
             
             {doctor.age && (
               <div className="flex items-center text-gray-700">
-                <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3 flex-shrink-0">
                   <Clock className="h-4 w-4 text-indigo-600" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-500">Age</p>
-                  <p>{doctor.age} years</p>
+                  <p className="text-xs sm:text-sm text-gray-500">Age</p>
+                  <p className="text-sm sm:text-base">{doctor.age} years</p>
                 </div>
               </div>
             )}
             
             {doctor.gender && (
               <div className="flex items-center text-gray-700">
-                <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3 flex-shrink-0">
                   <User className="h-4 w-4 text-indigo-600" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-500">Gender</p>
-                  <p>{doctor.gender}</p>
+                  <p className="text-xs sm:text-sm text-gray-500">Gender</p>
+                  <p className="text-sm sm:text-base">{doctor.gender}</p>
                 </div>
               </div>
             )}
             
             {doctor.mobile && (
               <div className="flex items-center text-gray-700">
-                <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3 flex-shrink-0">
                   <Phone className="h-4 w-4 text-indigo-600" />
                 </div>
-                <div>
-                  <p className="text-sm text-gray-500">Contact</p>
-                  <p>{doctor.mobile}</p>
+                <div className="break-words">
+                  <p className="text-xs sm:text-sm text-gray-500">Contact</p>
+                  <p className="text-sm sm:text-base">{doctor.mobile}</p>
                 </div>
               </div>
             )}
@@ -291,36 +291,36 @@ const DoctorProfileCard = ({ doctor, setDoctor }) => {
             
             {doctor.specialization && (
               <div className="flex items-center text-gray-700">
-                <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3 flex-shrink-0">
                   <Award className="h-4 w-4 text-indigo-600" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-500">Specialization</p>
-                  <p>{doctor.specialization}</p>
+                  <p className="text-xs sm:text-sm text-gray-500">Specialization</p>
+                  <p className="text-sm sm:text-base">{doctor.specialization}</p>
                 </div>
               </div>
             )}
             
             {doctor.degree && (
               <div className="flex items-center text-gray-700">
-                <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3 flex-shrink-0">
                   <Book className="h-4 w-4 text-indigo-600" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-500">Qualification</p>
-                  <p>{doctor.degree}</p>
+                  <p className="text-xs sm:text-sm text-gray-500">Qualification</p>
+                  <p className="text-sm sm:text-base">{doctor.degree}</p>
                 </div>
               </div>
             )}
             
             {doctor.experience && (
               <div className="flex items-center text-gray-700">
-                <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3 flex-shrink-0">
                   <Clock className="h-4 w-4 text-indigo-600" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-500">Experience</p>
-                  <p>{doctor.experience}</p>
+                  <p className="text-xs sm:text-sm text-gray-500">Experience</p>
+                  <p className="text-sm sm:text-base">{doctor.experience}</p>
                 </div>
               </div>
             )}
@@ -337,7 +337,7 @@ const DoctorProfileCard = ({ doctor, setDoctor }) => {
                   <FileText className="h-4 w-4 text-indigo-600" />
                 </div>
               </div>
-              <p className="text-gray-700">{doctor.bio}</p>
+              <p className="text-sm sm:text-base text-gray-700">{doctor.bio}</p>
             </div>
           </div>
         )}

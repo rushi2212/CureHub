@@ -15,7 +15,7 @@ const MedicineAnalyzer = () => {
   const canvasRef = useRef(null);
   const streamRef = useRef(null);
 
-  const BASE_URL = "https://fastapi-803g.onrender.com";
+  const BASE_URL = "http://localhost:8000";
 
   // Clean up camera stream on unmount or when switching modes
   useEffect(() => {
@@ -84,8 +84,9 @@ const MedicineAnalyzer = () => {
       const constraints = {
         video: {
           facingMode: "environment",
-          width: { ideal: 1280 },
-          height: { ideal: 720 },
+          // Adjust sizing for better responsiveness
+          width: { ideal: window.innerWidth < 768 ? 640 : 1280 },
+          height: { ideal: window.innerWidth < 768 ? 480 : 720 },
         },
       };
 
@@ -166,10 +167,10 @@ const MedicineAnalyzer = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="p-4 md:p-8 max-w-xl w-full bg-white rounded-xl shadow-lg space-y-6 mx-auto"
+      className="p-3 sm:p-4 md:p-8 max-w-xl w-full bg-white rounded-xl shadow-lg space-y-4 sm:space-y-6 mx-auto"
     >
       <motion.h2
-        className="text-2xl font-bold text-center text-blue-700"
+        className="text-xl sm:text-2xl font-bold text-center text-blue-700"
         initial={{ scale: 0.9 }}
         animate={{ scale: 1 }}
         transition={{ duration: 0.3 }}
@@ -177,17 +178,17 @@ const MedicineAnalyzer = () => {
         Medicine Analyzer
       </motion.h2>
 
-      <div className="bg-gray-50 p-4 md:p-6 rounded-lg shadow-inner">
-        <p className="text-sm text-gray-600 mb-4">
+      <div className="bg-gray-50 p-3 sm:p-4 md:p-6 rounded-lg shadow-inner">
+        <p className="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4">
           Choose an image input method:
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 mb-6">
+        <div className="flex flex-col xs:flex-row gap-2 sm:gap-4 mb-4 sm:mb-6">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => switchInputMethod("upload")}
-            className={`flex-1 py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors ${
+            className={`flex-1 py-2 sm:py-3 px-3 sm:px-4 rounded-lg flex items-center justify-center gap-1 sm:gap-2 transition-colors text-sm sm:text-base ${
               inputMethod === "upload"
                 ? "bg-blue-600 text-white"
                 : "bg-gray-200 text-gray-700 hover:bg-gray-300"
@@ -195,7 +196,7 @@ const MedicineAnalyzer = () => {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="h-4 w-4 sm:h-5 sm:w-5"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -214,7 +215,7 @@ const MedicineAnalyzer = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => switchInputMethod("camera")}
-            className={`flex-1 py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors ${
+            className={`flex-1 py-2 sm:py-3 px-3 sm:px-4 rounded-lg flex items-center justify-center gap-1 sm:gap-2 transition-colors text-sm sm:text-base ${
               inputMethod === "camera"
                 ? "bg-blue-600 text-white"
                 : "bg-gray-200 text-gray-700 hover:bg-gray-300"
@@ -222,7 +223,7 @@ const MedicineAnalyzer = () => {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="h-4 w-4 sm:h-5 sm:w-5"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -262,12 +263,12 @@ const MedicineAnalyzer = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={triggerFileInput}
-              className="w-full border-2 border-dashed border-blue-300 p-6 rounded-lg bg-blue-50 hover:bg-blue-100 transition-colors"
+              className="w-full border-2 border-dashed border-blue-300 p-4 sm:p-6 rounded-lg bg-blue-50 hover:bg-blue-100 transition-colors"
             >
               <div className="flex flex-col items-center justify-center text-blue-500">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-12 w-12 mb-2"
+                  className="h-8 w-8 sm:h-12 sm:w-12 mb-2"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -279,8 +280,8 @@ const MedicineAnalyzer = () => {
                     d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                   />
                 </svg>
-                <span className="font-medium">Click to browse files</span>
-                <span className="text-sm text-blue-400 mt-1">
+                <span className="font-medium text-sm sm:text-base">Click to browse files</span>
+                <span className="text-xs sm:text-sm text-blue-400 mt-1">
                   or drag and drop
                 </span>
               </div>
@@ -291,19 +292,19 @@ const MedicineAnalyzer = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
-            className="text-center space-y-4"
+            className="text-center space-y-3 sm:space-y-4"
           >
             {!cameraActive ? (
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={startCamera}
-                className="w-full border-2 border-dashed border-green-300 p-6 rounded-lg bg-green-50 hover:bg-green-100 transition-colors"
+                className="w-full border-2 border-dashed border-green-300 p-4 sm:p-6 rounded-lg bg-green-50 hover:bg-green-100 transition-colors"
               >
                 <div className="flex flex-col items-center justify-center text-green-500">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-12 w-12 mb-2"
+                    className="h-8 w-8 sm:h-12 sm:w-12 mb-2"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -321,15 +322,15 @@ const MedicineAnalyzer = () => {
                       d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"
                     />
                   </svg>
-                  <span className="font-medium">Start Camera</span>
-                  <span className="text-sm text-green-400 mt-1">
+                  <span className="font-medium text-sm sm:text-base">Start Camera</span>
+                  <span className="text-xs sm:text-sm text-green-400 mt-1">
                     Take a photo of your medicine
                   </span>
                 </div>
               </motion.button>
             ) : (
-              <div className="space-y-4">
-                <div className="relative overflow-hidden rounded-lg border-2 border-blue-100 ">
+              <div className="space-y-3 sm:space-y-4">
+                <div className="relative overflow-hidden rounded-lg border-2 border-blue-100">
                   <video
                     ref={videoRef}
                     autoPlay
@@ -338,19 +339,19 @@ const MedicineAnalyzer = () => {
                     className="w-full h-auto object-contain mx-auto"
                   />
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="border-2 border-white border-dashed rounded-lg h-48 w-48"></div>
+                    <div className="border-2 border-white border-dashed rounded-lg w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48"></div>
                   </div>
                 </div>
-                <div className="flex gap-4">
+                <div className="flex gap-2 sm:gap-4">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={captureImage}
-                    className="flex-1 py-3 bg-blue-600 text-white rounded-lg font-medium flex items-center justify-center gap-2"
+                    className="flex-1 py-2 sm:py-3 bg-blue-600 text-white rounded-lg font-medium flex items-center justify-center gap-1 sm:gap-2 text-sm sm:text-base"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5"
+                      className="h-4 w-4 sm:h-5 sm:w-5"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -374,11 +375,11 @@ const MedicineAnalyzer = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={stopCamera}
-                    className="flex-1 py-3 bg-gray-500 text-white rounded-lg font-medium flex items-center justify-center gap-2"
+                    className="flex-1 py-2 sm:py-3 bg-gray-500 text-white rounded-lg font-medium flex items-center justify-center gap-1 sm:gap-2 text-sm sm:text-base"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5"
+                      className="h-4 w-4 sm:h-5 sm:w-5"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -405,17 +406,17 @@ const MedicineAnalyzer = () => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="mt-4"
+          className="mt-3 sm:mt-4"
         >
-          <div className="flex justify-between items-center mb-2">
-            <p className="text-sm text-gray-600">Image Preview:</p>
+          <div className="flex justify-between items-center mb-1 sm:mb-2">
+            <p className="text-xs sm:text-sm text-gray-600">Image Preview:</p>
             <button
               onClick={clearSelection}
-              className="text-sm text-red-500 hover:text-red-700 flex items-center gap-1"
+              className="text-xs sm:text-sm text-red-500 hover:text-red-700 flex items-center gap-1"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4"
+                className="h-3 w-3 sm:h-4 sm:w-4"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -434,7 +435,7 @@ const MedicineAnalyzer = () => {
             <img
               src={URL.createObjectURL(selectedFile)}
               alt="Preview"
-              className="w-full h-auto object-contain max-h-60 mx-auto"
+              className="w-full h-auto object-contain max-h-40 sm:max-h-60 mx-auto"
             />
           </div>
         </motion.div>
@@ -445,7 +446,7 @@ const MedicineAnalyzer = () => {
         whileTap={{ scale: 0.98 }}
         onClick={handleUpload}
         disabled={loading || !selectedFile}
-        className={`w-full py-3 rounded-lg font-medium text-white transition-all shadow-md ${
+        className={`w-full py-2 sm:py-3 rounded-lg font-medium text-white transition-all shadow-md text-sm sm:text-base ${
           !selectedFile
             ? "bg-gray-400 cursor-not-allowed"
             : "bg-blue-600 hover:bg-blue-700"
@@ -454,7 +455,7 @@ const MedicineAnalyzer = () => {
         {loading ? (
           <div className="flex items-center justify-center gap-2">
             <svg
-              className="animate-spin h-5 w-5 text-white"
+              className="animate-spin h-4 w-4 sm:h-5 sm:w-5 text-white"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -484,12 +485,12 @@ const MedicineAnalyzer = () => {
         <motion.div
           initial={{ opacity: 0, x: -10 }}
           animate={{ opacity: 1, x: 0 }}
-          className="text-red-600 p-4 bg-red-50 rounded-lg border-l-4 border-red-500"
+          className="text-red-600 p-3 sm:p-4 bg-red-50 rounded-lg border-l-4 border-red-500 text-xs sm:text-sm"
         >
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 sm:gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="h-4 w-4 sm:h-5 sm:w-5"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -511,12 +512,12 @@ const MedicineAnalyzer = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-6"
+          className="mt-4 sm:mt-6"
         >
-          <div className="text-green-700 font-medium mb-2 flex items-center">
+          <div className="text-green-700 font-medium mb-1 sm:mb-2 flex items-center text-sm sm:text-base">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 mr-2"
+              className="h-4 w-4 sm:h-5 sm:w-5 mr-1 sm:mr-2"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -534,7 +535,7 @@ const MedicineAnalyzer = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="border p-5 rounded-lg bg-gray-50 shadow-inner prose max-w-none"
+            className="border p-3 sm:p-5 rounded-lg bg-gray-50 shadow-inner prose prose-sm sm:prose max-w-none text-xs sm:text-sm md:text-base"
           >
             <ReactMarkdown>{analysisResult.analysis}</ReactMarkdown>
           </motion.div>

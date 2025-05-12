@@ -136,16 +136,16 @@ const Register = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      <div className="w-full max-w-md px-6 py-8 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-        <h2 className="text-3xl font-extrabold text-gray-800 text-center">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 px-4 py-6 sm:px-6 md:px-8">
+      <div className="w-full max-w-md px-4 py-6 sm:px-6 sm:py-8 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+        <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-800 text-center">
           Create Account
         </h2>
-        <p className="mt-2 text-sm text-gray-600 text-center">
+        <p className="mt-2 text-xs sm:text-sm text-gray-600 text-center">
           Join us to manage your healthcare journey
         </p>
 
-        <form onSubmit={handleSubmit} className="mt-6 space-y-5">
+        <form onSubmit={handleSubmit} className="mt-4 sm:mt-6 space-y-4 sm:space-y-5">
           {/* Name */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
@@ -155,14 +155,15 @@ const Register = () => {
               name="name"
               value={form.name}
               onChange={handleChange}
-              className={`mt-1 block w-full px-4 py-3 border rounded-lg focus:outline-none transition ${
+              placeholder="John Doe"
+              className={`mt-1 block w-full px-3 py-2 sm:px-4 sm:py-3 border rounded-lg focus:outline-none transition ${
                 errors.name
                   ? "border-red-500 focus:ring-red-500"
                   : "border-gray-300 focus:ring-blue-500"
               }`}
             />
             {errors.name && (
-              <p className="mt-1 text-red-600 text-sm">{errors.name}</p>
+              <p className="mt-1 text-red-600 text-xs sm:text-sm">{errors.name}</p>
             )}
           </div>
 
@@ -176,14 +177,15 @@ const Register = () => {
               type="email"
               value={form.email}
               onChange={handleChange}
-              className={`mt-1 block w-full px-4 py-3 border rounded-lg focus:outline-none transition ${
+              placeholder="your@email.com"
+              className={`mt-1 block w-full px-3 py-2 sm:px-4 sm:py-3 border rounded-lg focus:outline-none transition ${
                 errors.email
                   ? "border-red-500 focus:ring-red-500"
                   : "border-gray-300 focus:ring-blue-500"
               }`}
             />
             {errors.email && (
-              <p className="mt-1 text-red-600 text-sm">{errors.email}</p>
+              <p className="mt-1 text-red-600 text-xs sm:text-sm">{errors.email}</p>
             )}
           </div>
 
@@ -197,35 +199,39 @@ const Register = () => {
               type="password"
               value={form.password}
               onChange={handleChange}
-              className={`mt-1 block w-full px-4 py-3 border rounded-lg focus:outline-none transition ${
+              placeholder="••••••••"
+              className={`mt-1 block w-full px-3 py-2 sm:px-4 sm:py-3 border rounded-lg focus:outline-none transition ${
                 errors.password
                   ? "border-red-500 focus:ring-red-500"
                   : "border-gray-300 focus:ring-blue-500"
               }`}
             />
             {errors.password && (
-              <p className="mt-1 text-red-600 text-sm">{errors.password}</p>
+              <p className="mt-1 text-red-600 text-xs sm:text-sm">{errors.password}</p>
             )}
           </div>
 
           {/* Mobile & Age */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-gray-700">
                 Mobile Number
               </label>
               <input
                 name="mobile"
+                type="tel"
+                inputMode="numeric"
                 value={form.mobile}
                 onChange={handleChange}
-                className={`mt-1 block w-full px-4 py-3 border rounded-lg focus:outline-none transition ${
+                placeholder="10 digits"
+                className={`mt-1 block w-full px-3 py-2 sm:px-4 sm:py-3 border rounded-lg focus:outline-none transition ${
                   errors.mobile
                     ? "border-red-500 focus:ring-red-500"
                     : "border-gray-300 focus:ring-blue-500"
                 }`}
               />
               {errors.mobile && (
-                <p className="mt-1 text-red-600 text-sm">{errors.mobile}</p>
+                <p className="mt-1 text-red-600 text-xs sm:text-sm">{errors.mobile}</p>
               )}
             </div>
             <div>
@@ -235,16 +241,18 @@ const Register = () => {
               <input
                 name="age"
                 type="number"
+                inputMode="numeric"
                 value={form.age}
                 onChange={handleChange}
-                className={`mt-1 block w-full px-4 py-3 border rounded-lg focus:outline-none transition ${
+                placeholder="Your age"
+                className={`mt-1 block w-full px-3 py-2 sm:px-4 sm:py-3 border rounded-lg focus:outline-none transition ${
                   errors.age
                     ? "border-red-500 focus:ring-red-500"
                     : "border-gray-300 focus:ring-blue-500"
                 }`}
               />
               {errors.age && (
-                <p className="mt-1 text-red-600 text-sm">{errors.age}</p>
+                <p className="mt-1 text-red-600 text-xs sm:text-sm">{errors.age}</p>
               )}
             </div>
           </div>
@@ -258,7 +266,7 @@ const Register = () => {
               name="gender"
               value={form.gender}
               onChange={handleChange}
-              className="mt-1 block w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 transition"
+              className="mt-1 block w-full px-3 py-2 sm:px-4 sm:py-3 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 transition"
             >
               <option>Male</option>
               <option>Female</option>
@@ -270,9 +278,9 @@ const Register = () => {
           <button
             type="submit"
             disabled={!isFormValid()}
-            className={`w-full py-3 rounded-lg text-white font-medium transition-transform transform ${
+            className={`w-full py-2 sm:py-3 rounded-lg text-white font-medium transition-transform transform ${
               isFormValid()
-                ? "bg-gradient-to-r from-blue-500 to-indigo-600 hover:scale-105"
+                ? "bg-gradient-to-r from-blue-500 to-indigo-600 active:scale-95 hover:scale-105"
                 : "bg-gray-300 cursor-not-allowed"
             }`}
           >
@@ -280,7 +288,7 @@ const Register = () => {
           </button>
         </form>
 
-        <p className="mt-6 text-center text-sm text-gray-600">
+        <p className="mt-4 sm:mt-6 text-center text-xs sm:text-sm text-gray-600">
           Already have an account?{" "}
           <button
             onClick={() => navigate("/login")}
