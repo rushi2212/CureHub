@@ -13,7 +13,7 @@ CureHub is a comprehensive healthcare management system designed to streamline i
 
 ### Prototype
 Explore the live prototype:  
-[Visit CureHub](https://curehub-01ml.onrender.com/)
+[Visit CureHub](https://curehub-bfrb.onrender.com)
 
 #### Login Pages
 - [Doctor Login](https://curehub-01ml.onrender.com/login)
